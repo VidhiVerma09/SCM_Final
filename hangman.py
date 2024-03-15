@@ -1,6 +1,5 @@
 import random
 
-# Different sets of Hangman pictures based on difficulty levels
 HANGMAN_PICS_EASY = ['''
     +---+
         |
@@ -138,7 +137,7 @@ HANGMAN_PICS_HARD = ['''
    / \  |
        ===''',]
 
-words = 'ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt otter owl panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk sloth snake spider stork swan tiger toad trout turkey turtle weasel whale wolf wombat zebra'.split()
+words = 'apple banana cherry date elderberry fig grapefruit honeydew kiwi lemon mango nectarine orange papaya quince raspberry strawberry tangerine ugli fruit watermelon'.split()
 
 def getRandomWord(wordList):
     """
@@ -222,4 +221,20 @@ while True:
         guess = getGuess(missedLetters + correctLetters)
 
         if guess in secretWord:
-            correctLetters = correct
+            correctLetters += guess
+            # Check if the player has won
+            foundAllLetters = True
+            for letter in secretWord:
+                if letter not in correctLetters:
+                    foundAllLetters = False
+                    break
+            if foundAllLetters:
+                print("Congratulations! You've won! The word was", secretWord)
+                gameIsDone = True
+                break
+        else:
+            missedLetters += guess
+            if len(missedLetters) == maxMissedGuesses:
+                print("Sorry! You've run out of guesses. The word was", secretWord)
+                gameIsDone = True
+                break
