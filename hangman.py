@@ -238,3 +238,6 @@ while True:
                 print("Sorry! You've run out of guesses. The word was", secretWord)
                 gameIsDone = True
                 break
+                
+    if not playAgain():
+        break
