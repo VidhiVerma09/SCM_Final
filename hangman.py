@@ -45,9 +45,9 @@ words = {
 
 def choose_difficulty_screen():
     font = pygame.font.Font(None, 36)
-    text_easy = font.render('1. Easy (Miscellaneous)', True, (255, 255, 255))
-    text_medium = font.render('2. Medium (Fruits)', True, (255, 255, 255))
-    text_hard = font.render('3. Hard (Animals)', True, (255, 255, 255))
+    text_easy = font.render('1. Easy', True, (255, 255, 255))
+    text_medium = font.render('2. Medium', True, (255, 255, 255))
+    text_hard = font.render('3. Hard', True, (255, 255, 255))
 
     screen.blit(text_easy, (100, 200))
     screen.blit(text_medium, (100, 250))
@@ -91,7 +91,7 @@ Wins = 0
 
 Loses = 0
 
-time_duration = 15 #timer 
+time_duration = 30 #timer 
 
 trophy = 0
 
@@ -248,8 +248,13 @@ while game: #keeps the window open until closed by user
             Sound_channel.stop()
             screen.blit(win, (250, 250))
             font = pygame.font.Font('assets/font/GravediggerPersonalUse-K7ayW.ttf', 20) #downloaded font
-            text = font.render('Congratulations, You have won, PRESS R TO RESTART', True, (0, 0, 255)) #Winner
-            screen.blit(text, (100, 100)) #text location on display
+            text = font.render('Congratulations, You have won,', True, (0, 0, 255))
+            text2 = font.render('The word was ' + word, True, (0, 0, 255)) #Winner
+            text1 = font.render('Press R to restart', True, (255, 0, 0)) 
+            screen.blit(text, (100, 100))
+            screen.blit(text2, (100, 200))
+            screen.blit(text1, (100, 500)) #text location on display
+
             
         elif strikes >= max_strikes: #you lost
             Saddest.play()
