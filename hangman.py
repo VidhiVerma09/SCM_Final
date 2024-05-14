@@ -31,6 +31,7 @@ Winner = pygame.mixer.Sound('assets/sound/mony.mp3')
 Sad = pygame.mixer.Sound('assets/sound/moye.mp3')
 Winner1 = pygame.mixer.Sound('assets/sound/rizz.mp3')
 Saddest = pygame.mixer.Sound('assets/sound/hamter.mp3')
+lev = pygame.mixer.Sound('assets/sound/lev.mp3')
 Lives = pygame.image.load('assets/images/heart.png')
 Lives = pygame.transform.scale(Lives, (50, 50))
 start_time = pygame.time.get_ticks() #per 1000 millisecond
@@ -66,6 +67,7 @@ def choose_difficulty_screen():
                     return 'hard'
 
 choose_difficulty_screen()
+pygame.display.update()
 
 
 
@@ -95,13 +97,17 @@ time_duration = 30 #timer
 
 trophy = 0
 
+level = 1
 
+xp = 0
 
+xp_nxt_lvl = 100
 
+up = 0
 
 def hint(word, guessed):
     available_letters = [letter for letter in word if letter not in guessed]
-    if available_letters:
+    if available_letters:       
         hint_letter = random.choice(available_letters)
         return hint_letter
     else:
@@ -187,25 +193,45 @@ while game: #keeps the window open until closed by user
                     Loses += 1
                     reset()
                 if set(word) <= guessed:
-                    Wins += 1 
+                    Wins += 1
+                    xp += 50
+                    if xp>=xp_nxt_lvl:
+                        level += 1
+                        xp = 0
+                        xp_nxt_lvl += 10
+                        up = 1
                     reset()
                 if remaining_time <=0:
                     Loses += 1
                     reset()
-        
-                
+               
+   
+           
+
+
 
     font_stats = pygame.font.Font(None, 20) #wins and loses
     text_wins = font_stats.render('Wins: ' + str(Wins), True, (0, 255, 0))
-    text_loses = font_stats.render('Loses: ' + str(Loses), True, (255, 0, 0))   
-           
+    text_loses = font_stats.render('Loses: ' + str(Loses), True, (255, 0, 0))
+    text_level = font_stats.render('Level: ' + str(level), True, (0, 0, 255))
+    #text_up = font_stats.render('You leveled Up', True, (0, 0, 0))
+    
+    if up == 1 :
+        #screen.blit(text_up, (100, 100))
+        lev.play()
+        up = 0
 
+    
     
     screen.blit(Background_Image, (0,0)) #display on screen
     screen.blit(Hang, (550, 110)) #display
     heart(max_strikes-strikes) #lives
     screen.blit(text_wins,(650, 20))   
-    screen.blit(text_loses,(650, 60)) 
+    screen.blit(text_loses,(650, 60))
+    screen.blit(text_level,(650, 100))  
+
+    
+
     if strikes>0 and not game_over: #when there is a strike 
         screen.blit(Stick_reaper, (5 + strikes * 50, 115)) #the reaper will appear and drag you to your death :>
     draw(word, guessed) #updating the display  to the current state
