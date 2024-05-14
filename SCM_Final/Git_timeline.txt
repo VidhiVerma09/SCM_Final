@@ -8,6 +8,6 @@ Added multimode (not done) - Veeraj
 Added themes (not done) - Veeraj
 
 Week 2: User Interaction and Visual Improvements
-Added rewards system (not done) - Vinit
+Added leveling system (done) - Vinit
 Added leaderboard (pending) - Vinit & Veeraj
 
