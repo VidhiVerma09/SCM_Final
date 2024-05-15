@@ -4,10 +4,9 @@ Week 1: Project Setup
 Created Repository
 Added Collaborators
 Uploaded first release
-Added multimode (not done) - Veeraj
-Added themes (not done) - Veeraj
+Added achievements (done) - Veeraj
 
 Week 2: User Interaction and Visual Improvements
 Added leveling system (done) - Vinit
-Added leaderboard (pending) - Vinit & Veeraj
+Added themes (done) - Vinit & Veeraj
 
