@@ -10,4 +10,4 @@ Added new words(done) - Veeraj
 Week 2: User Interaction and Visual Improvements
 Added leveling system (done) - Vinit
 Added themes (done) - Vinit & Veeraj
-
+Improved words (done) - Vidhi
