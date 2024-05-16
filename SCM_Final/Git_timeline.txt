@@ -5,6 +5,7 @@ Created Repository
 Added Collaborators
 Uploaded first release
 Added achievements (done) - Veeraj
+Added new words(done) - Veeraj
 
 Week 2: User Interaction and Visual Improvements
 Added leveling system (done) - Vinit
